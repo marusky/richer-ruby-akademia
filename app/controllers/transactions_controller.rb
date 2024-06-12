@@ -1,4 +1,5 @@
 class TransactionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_transaction, only: %i[show edit update destroy]
 
   # GET /transactions
@@ -24,7 +25,8 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new(transaction_params)
 
     if @transaction.save
-      redirect_to @transaction, notice: 'Transaction was successfully created.'
+      redirect_to transactions_url,
+                  notice: 'Transaction was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -33,7 +35,7 @@ class TransactionsController < ApplicationController
   # PATCH/PUT /transactions/1
   def update
     if @transaction.update(transaction_params)
-      redirect_to @transaction,
+      redirect_to transactions_url,
                   notice: 'Transaction was successfully updated.',
                   status: :see_other
     else
