@@ -18,6 +18,15 @@ en:
     submit:
       create: "Create"
       update: "Update"
+  categories:
+    new:
+      header: 'New category'
+      back_link: 'Categories'
+    edit:
+      header: 'Editing category'
+    index:
+      header: 'Categories'
+      new: 'New'
   transactions:
     index:
       header: 'Transactions'
