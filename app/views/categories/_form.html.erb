@@ -1,0 +1,41 @@
+<%= form_with(model: category) do |form| %>
+  <% if category.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+        <% category.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :color %>
+    <% Category.colors.keys.each do |key| %>
+      <%= form.radio_button :color, key, class: 'btn-check' %>
+      <%= form.label "color_#{key}", class: "btn btn-outline-#{key} rounded-3 p-3" do %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :icon %>
+    <% Category.icons.keys.each do |key| %>
+      <%= form.radio_button :icon, key, class: 'btn-check' %>
+      <%= form.label "icon_#{key}", class: 'btn btn-outline-secondary rounded-3' do %>
+        <i class="bi bi-<%= key%>"></i>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

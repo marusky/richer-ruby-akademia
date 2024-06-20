@@ -26,6 +26,18 @@
   </div>
 
   <div>
+    <%= form.label :category, class: 'form-label' %>
+    <div>
+      <% current_user.categories.each do |category| %>
+        <%= form.radio_button :category_id, category.id, class: 'btn-check' %>
+        <%= form.label "category_id_#{category.id}", class: "btn btn-outline-#{category.color} rounded-3" do %>
+          <i class="bi bi-<%= category.icon %>"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div>
     <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

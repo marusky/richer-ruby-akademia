@@ -14,6 +14,9 @@
             <%= link_to t('.transactions'), transactions_path, class: "nav-link #{active_for(controller: 'transactions')}" %>
           </li>
           <li class="nav-item">
+            <%= link_to t('.categories'), categories_path, class: "nav-link #{active_for(controller: 'categories')}" %>
+          </li>
+          <li class="nav-item">
             <%= button_to t('.logout'), destroy_user_session_path, method: :delete, class: 'nav-link' %>
           </li>
         <% else %>
