@@ -25,7 +25,7 @@ class TransactionsController < ApplicationController
     @transaction = current_user.transactions.build(transaction_params)
 
     if @transaction.save
-      redirect_to transactions_url,
+      redirect_to root_with_locale_url,
                   notice: 'Transaction was successfully created.'
     else
       render :new, status: :unprocessable_entity
@@ -35,7 +35,7 @@ class TransactionsController < ApplicationController
   # PATCH/PUT /transactions/1
   def update
     if @transaction.update(transaction_params)
-      redirect_to transactions_url,
+      redirect_to @transaction,
                   notice: 'Transaction was successfully updated.',
                   status: :see_other
     else

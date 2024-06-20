@@ -24,4 +24,16 @@ class Category < ApplicationRecord
          'ticket' => 15,
          'wrench' => 16
        }
+
+  COLORS_TO_HEX = {
+    primary: '#0d6efd',
+    success: '#198754',
+    info: '#0dcaf0',
+    warning: '#ffc107',
+    danger: '#dc3545'
+  }
+
+  def hex_color
+    COLORS_TO_HEX[color.to_sym]
+  end
 end
